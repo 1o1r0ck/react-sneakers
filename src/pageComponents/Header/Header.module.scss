@@ -1,0 +1,25 @@
+header{
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    .headerLeft{
+        display: flex;
+        .headerTitle{
+            margin-left: 16px;
+            p{
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .headerInfo{
+        display: flex;
+        align-items: center;
+        li{
+            margin-right: 30px;
+            img{
+                cursor: pointer;
+            }
+        }            
+    }
+}
