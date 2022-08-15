@@ -40,11 +40,21 @@ body, html{
                 display: flex;
                 align-items: center;
                 padding: 0 15px;
+                position: relative;
                 input{
                     font-size: 16px;
                     border: 0;
                     padding: 13px;
                     width: 200px;
+                }
+                .close{
+                    position: absolute;
+                    right: 0;
+                    top: 14px;
+                    right: 15px;
+                    cursor: pointer;
+                    width: 20px;
+                    height: 20px;
                 }
             }
     

@@ -28,6 +28,7 @@ const Card = ({img, name, price, onFavorite, onPlus }) => {
                     <span> Цена: </span>
                     <b> {price} руб. </b>
                 </div>
+
                     <img alt="addToCard" onClick={handlePlus}
                         src={add ? chPlus : plus}
                     />     
