@@ -26,45 +26,5 @@ body, html{
     max-width: 1080px;
     margin: 50px auto;
 
-    .content{
-        
-        padding: 40px;
-        .title{
-            display: flex;
-            align-items: center;   
-            margin-bottom: 40px;
-            justify-content: space-between;
-            .searchBar{
-                border: 1px solid #F3F3F3;
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                padding: 0 15px;
-                position: relative;
-                input{
-                    font-size: 16px;
-                    border: 0;
-                    padding: 13px;
-                    width: 200px;
-                }
-                .close{
-                    position: absolute;
-                    right: 0;
-                    top: 14px;
-                    right: 15px;
-                    cursor: pointer;
-                    width: 20px;
-                    height: 20px;
-                }
-            }
-    
-        }
-        
 
-
-        .sneakers{
-            display: flex;
-            flex-wrap: wrap;
-        }
-    }
 }

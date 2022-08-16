@@ -1,0 +1,51 @@
+.favorites {
+  padding: 40px;
+  h1 {
+    margin-bottom: 40px;
+  }
+  .favoriteItems {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .emptyFavorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h3 {
+      margin-top: 24px;
+      margin-bottom: 11px;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 29px;
+      text-align: center;
+    }
+    h4 {
+      line-height: 19px;
+      font-weight: 400;
+      font-size: 16px;
+      text-align: center;
+      opacity: 0.4;
+      margin-bottom: 70px;
+    }
+    .backBtn {
+      width: 245px;
+      height: 55px;
+      background: #9dd558;
+      border-radius: 18px;
+      border: 0;
+      padding: 20px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        margin-right: 20px;
+      }
+    }
+  }
+}

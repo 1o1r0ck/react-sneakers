@@ -2,6 +2,7 @@ header{
     padding: 40px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #eaeaea;
     .headerLeft{
         display: flex;
         .headerTitle{
@@ -13,6 +14,7 @@ header{
     }
 
     .headerInfo{
+        text-decoration: none;
         display: flex;
         align-items: center;
         li{
