@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import styles from "../Card/card.module.scss";
 import plus from "../../assets/plus.svg";
 import chPlus from "../../assets/greenPlus.svg";
@@ -42,10 +41,10 @@ const Card = ({
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
       >
-        <rect x="1" y="0" rx="10" ry="10" width="155" height="155" /> 
+        <rect x="0" y="0" rx="10" ry="10" width="155" height="155" /> 
         <rect x="0" y="167" rx="3" ry="5" width="155" height="15" /> 
         <rect x="0" y="187" rx="5" ry="5" width="100" height="15" /> 
-        <rect x="1" y="234" rx="5" ry="5" width="80" height="25" /> 
+        <rect x="0" y="234" rx="5" ry="5" width="80" height="25" /> 
         <rect x="124" y="230" rx="10" ry="10" width="32" height="32" />
       </ContentLoader> :
        <>
