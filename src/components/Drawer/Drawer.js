@@ -19,7 +19,7 @@ const Drawer = ({ onClose, onRemove, items = [] }) => {
           <div>
             <div className={styles.cart}>
               {items.map((obj) => (
-                <div className={styles.cartItem}>
+                <div key = {obj.id} className={styles.cartItem}>
                   <img src={obj.img} alt="sneaker" width={70} height={70} />
                   <div className={styles.itemPrice}>
                     <p> {obj.name} </p>
