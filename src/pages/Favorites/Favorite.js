@@ -4,16 +4,20 @@ import Card from "../../components/Card/card";
 import crySmile from "../../assets/crySmile.png";
 import { Link } from "react-router-dom";
 import bArrow from "../../assets/backArrow.svg";
+import { useContext } from "react";
 
-function Favorite({ items, onAddToFavorite }) {
+import { AppContext } from "../../App";
+
+function Favorite({ onAddToFavorite }) {
+  const {favorites} = useContext(AppContext);
   return (
     <div className={styles.favorites}>
-      {items.length > 0 ? (
+      {favorites.length > 0 ? (
         <div>
           <h1>Мои закладки</h1>
 
           <div className={styles.favoriteItems}>
-            {items.map((item, index) => (
+            {favorites.map((item, index) => (
               <Card
                 key={index}
                 favorited={true}

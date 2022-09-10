@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import styles from "./index.module.scss";
 import axios from "axios";
 
@@ -9,6 +9,8 @@ import Drawer from "./components/Drawer/Drawer";
 import Home from "./pages/Home/Home";
 import { Route } from "react-router-dom";
 import Favorite from "./pages/Favorites/Favorite";
+
+export const AppContext = createContext({});
 
 function App() {
   const [items, setItems] = useState([]);
@@ -85,7 +87,8 @@ function App() {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <AppContext.Provider value={{items, cartItems, favorites}}>
+        <div className={styles.wrapper}>
       {cartOpened && (
         <Drawer
           items={cartItems}
@@ -110,9 +113,12 @@ function App() {
       </Route>
 
       <Route path="/favorite" exact>
-        <Favorite items={favorites} onAddToFavorite={onAddToFavorite} />
+        <Favorite  onAddToFavorite={onAddToFavorite} />
       </Route>
     </div>
+
+
+    </AppContext.Provider>
   );
 }
 
