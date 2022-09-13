@@ -5,7 +5,6 @@ import styles from "./Home.module.scss";
 
 function Home({
   items,
-  cartItems,
   searchValue,
   setSearchValue,
   onChangeSearchInput,
@@ -14,9 +13,12 @@ function Home({
   isLoading,
 }) {
 
+
   const clean = () => {
     setSearchValue("");
   };
+
+  
 
   const renderItems = () => {
     const filteredItems = items.filter((item) =>
@@ -26,7 +28,6 @@ function Home({
               key={index}
               onPlus={(obj) => onAddToCard(item)}
               onFavorite={(obj) => onAddToFavorite(obj)}
-              added = {cartItems.some(obj => Number(obj.id) === Number(item.id))} 
               {...item}
               loading = {isLoading}
             />

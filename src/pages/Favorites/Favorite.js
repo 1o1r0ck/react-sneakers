@@ -5,11 +5,10 @@ import crySmile from "../../assets/crySmile.png";
 import { Link } from "react-router-dom";
 import bArrow from "../../assets/backArrow.svg";
 import { useContext } from "react";
-
 import { AppContext } from "../../App";
 
-function Favorite({ onAddToFavorite }) {
-  const {favorites} = useContext(AppContext);
+function Favorite() {
+  const {favorites, onAddToFavorite} = useContext(AppContext);
   return (
     <div className={styles.favorites}>
       {favorites.length > 0 ? (
@@ -27,7 +26,8 @@ function Favorite({ onAddToFavorite }) {
             ))}
           </div>
         </div>
-      ) : (
+      ) : 
+      (
         <div className={styles.emptyFavorites}>
           <img src={crySmile} alt="Smile" width={70} height={70} />
           <h3>Закладок нет </h3>

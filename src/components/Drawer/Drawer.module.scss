@@ -68,6 +68,10 @@
       }
     }
 
+  .drawerItems{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     .cart {
       flex-direction: column;
       display: flex;
@@ -107,6 +111,8 @@
       }
     }
   }
+}
+
   .cartTotalBlock {
     div {
       flex: 1;

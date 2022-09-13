@@ -10,13 +10,12 @@ const Drawer = ({ onClose, onRemove, items = [] }) => {
     <div className={styles.overlay}>
       <div className={styles.drawer}>
         <h2>
-          {" "}
           Корзина
           <img src={del} alt="close" onClick={onClose} />
         </h2>
 
         {items.length > 0 ? (
-          <div>
+          <div className={styles.drawerItems}>
             <div className={styles.cart}>
               {items.map((obj) => (
                 <div key = {obj.id} className={styles.cartItem}>

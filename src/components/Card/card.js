@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../Card/card.module.scss";
 import plus from "../../assets/plus.svg";
 import chPlus from "../../assets/greenPlus.svg";
 import ContentLoader from "react-content-loader";
 import liked from "../../assets/liked.svg";
 import unliked from "../../assets/unliked.png";
+import { AppContext } from "../../App";
 
 const Card = ({
   id,
@@ -14,15 +15,14 @@ const Card = ({
   onFavorite,
   onPlus,
   favorited = false,
-  added = false,
   loading = false, 
 }) => {
-  const [add, setAdd] = useState(added);
+
+  const {isItemAdded} = useContext(AppContext);
   const [favorite, setFavorite] = useState(favorited);
 
   const handlePlus = () => {
     onPlus({ id, img, name, price });
-    setAdd(!add);
   };
 
   const handleFavorite = () => {
@@ -60,7 +60,7 @@ const Card = ({
            <b> {price} руб. </b>
          </div>
   
-         <img alt="addToCard" onClick={handlePlus} src={add ? chPlus : plus} />
+         <img alt="addToCard" onClick={handlePlus} src={isItemAdded(id) ? chPlus : plus} />
        </div>
        </>
 
