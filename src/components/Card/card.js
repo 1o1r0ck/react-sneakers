@@ -59,9 +59,19 @@ const Card = ({
            <span> Цена: </span>
            <b> {price} руб. </b>
          </div>
-  
-         <img alt="addToCard" onClick={handlePlus} src={isItemAdded(id) ? chPlus : plus} />
+              {onPlus &&  (
+
+
+<img alt="addToCard" onClick={handlePlus} src={isItemAdded(id) ? chPlus : plus} />
+
+              )
+              
+              }
+        
+
+
        </div>
+
        </>
 
       }

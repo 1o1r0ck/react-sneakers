@@ -1,11 +1,37 @@
 import styles from "./Drawer.module.scss";
 
+import offer from "../../assets/offer.jpg";
 import del from "../../assets/delete.svg";
 import empty from "../../assets/emptyCart.png";
 import bArrow from "../../assets/backArrow.svg";
 import fArrow from "../../assets/frontArrow.svg";
+import Info from "./Info";
+import { useContext, useState } from "react";
+import { AppContext } from "../../App";
+import axios from "axios";
 
 const Drawer = ({ onClose, onRemove, items = [] }) => {
+  const { cartItems, setCartItems } = useContext(AppContext);
+  const [isOrderComplete, setIsOrderComplete] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [orderId, setOrderId] = useState(null);
+
+  const onClickOrder = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.post(
+        "https://62f172ac25d9e8a2e7cc9e15.mockapi.io/orders",
+        { items: cartItems }
+      );
+      await axios.put("https://62f172ac25d9e8a2e7cc9e15.mockapi.io/cart", []);
+      setOrderId(data.id);
+      setIsOrderComplete(true);
+      setCartItems([]);
+    } catch (error) {
+      alert("Не удалось создать заказ!");
+    }
+    setIsLoading(false);
+  };
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
@@ -18,7 +44,7 @@ const Drawer = ({ onClose, onRemove, items = [] }) => {
           <div className={styles.drawerItems}>
             <div className={styles.cart}>
               {items.map((obj) => (
-                <div key = {obj.id} className={styles.cartItem}>
+                <div key={obj.id} className={styles.cartItem}>
                   <img src={obj.img} alt="sneaker" width={70} height={70} />
                   <div className={styles.itemPrice}>
                     <p> {obj.name} </p>
@@ -33,7 +59,7 @@ const Drawer = ({ onClose, onRemove, items = [] }) => {
                 </div>
               ))}
             </div>
-            
+
             <ul className={styles.cartTotalBlock}>
               <li>
                 <span> Итого: </span>
@@ -47,24 +73,30 @@ const Drawer = ({ onClose, onRemove, items = [] }) => {
               </li>
             </ul>
             <div className={styles.btn}>
-              <button className={styles.createBtn}>
-                {" "}
-                Оформить заказ <img src={fArrow} alt="frontArrow" />{" "}
+              <button
+                onClick={onClickOrder}
+                disabled={isLoading}
+                className={styles.createBtn}
+              >
+                Оформить заказ <img src={fArrow} alt="frontArrow" />
               </button>
             </div>
           </div>
         ) : (
-          <div className={styles.emptyCart}>
-            <img src={empty} alt="emptyCart" />
-            <h3> Корзина пустая </h3>
-            <h4>
-              {" "}
-              Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.{" "}
-            </h4>
-            <button onClick={onClose} className={styles.backBtn}>
-              <img src={bArrow} alt="backArrow" /> Вернуться назад
-            </button>
-          </div>
+          <Info
+            title={isOrderComplete ? "Заказ оформлен!" : "Корзина пустая"}
+            image={isOrderComplete ? offer : empty}
+            description={
+              isOrderComplete ? (
+                <>
+                  {" "}
+                  Ваш заказ #{orderId} скоро будет передан курьерской доставке{" "}
+                </>
+              ) : (
+                "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
+              )
+            }
+          />
         )}
       </div>
     </div>

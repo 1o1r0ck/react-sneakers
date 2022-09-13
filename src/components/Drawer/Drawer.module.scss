@@ -146,6 +146,10 @@
       line-height: 19px;
       color: #ffffff;
       cursor: pointer;
+      &:disabled{
+        background-color: #bebebe;
+        cursor: default;
+      }
       img {
         margin-left: 30px;
       }

@@ -87,10 +87,10 @@ function App() {
   };
 
     const isItemAdded = (id) => {
-      return cartItems.some(obj => Number(obj.parentId) === Number(id))
+      return cartItems.some(obj => Number(obj.id) === Number(id))
     } 
   return (
-    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened}}>
+    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened, setCartItems}}>
         <div className={styles.wrapper}>
       {cartOpened && (
         <Drawer
