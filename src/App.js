@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import styles from "./index.module.scss";
 import axios from "axios";
 
@@ -9,6 +9,7 @@ import Drawer from "./components/Drawer/Drawer";
 import Home from "./pages/Home/Home";
 import { Route } from "react-router-dom";
 import Favorite from "./pages/Favorites/Favorite";
+import Orders from "./pages/Orders/Orders";
 
 export const AppContext = createContext({});
 
@@ -90,7 +91,7 @@ function App() {
       return cartItems.some(obj => Number(obj.id) === Number(id))
     } 
   return (
-    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened, setCartItems}}>
+    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToCard, onAddToFavorite, setCartOpened, setCartItems}}>
         <div className={styles.wrapper}>
       {cartOpened && (
         <Drawer
@@ -117,6 +118,12 @@ function App() {
 
       <Route path="/favorite" exact>
         <Favorite />
+      </Route>
+
+      <Route path="/orders" exact>
+        <Orders />
+
+
       </Route>
     </div>
 
