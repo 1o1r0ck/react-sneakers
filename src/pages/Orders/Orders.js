@@ -17,17 +17,20 @@ function Orders() {
     const [orders, setOrders] = useState([]);
 
         useEffect(() => {
+
             (async () => {
                 try {
-                    const { data } = await axios.get( "https://62f172ac25d9e8a2e7cc9e15.mockapi.io/orders");
-                setOrders(data.reduce((prev, obj) => [...prev, ...obj.item], []));
-                setIsLoading(false)
+                  const { data } = await axios.get("https://62f172ac25d9e8a2e7cc9e15.mockapi.io/orders");
+                  setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []));
+                  setIsLoading(false);
                 } catch (error) {
-                    alert("Ошибка при запросе заказа!")
+                  alert('Ошибка при запросе заказов');
+                  console.error(error);
                 }
-            })();
+              })();
+            }, []);
 
-        }, []);
+
 
   return (
     <div className={styles.favorites}>
@@ -36,11 +39,9 @@ function Orders() {
           <h1>Мои Заказы</h1>
 
           <div className={styles.favoriteItems}>
-            {orders.map((item, index) => (
+            {(isLoading ? [...Array(8)] : orders).map((item, index) => (
               <Card
               key={index}
-              onPlus={(obj) => onAddToCard(item)}
-              onFavorite={(obj) => onAddToFavorite(obj)}
               {...item}
               loading = {isLoading}
               />
