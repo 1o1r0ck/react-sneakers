@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styles from "../Card/card.module.scss";
 import plus from "../../assets/plus.svg";
-import chPlus from "../../assets/greenPlus.svg";
+import greenPlus from "../../assets/greenPlus.svg";
 import ContentLoader from "react-content-loader";
 import liked from "../../assets/liked.svg";
 import unliked from "../../assets/unliked.png";
@@ -17,8 +17,7 @@ const Card = ({
   favorited = false,
   loading = false,
 }) => {
-  const { isItemAdded } = useContext(AppContext);
-  const [favorite, setFavorite] = useState(favorited);
+  const { isItemAdded, isItemLiked } = useContext(AppContext);
 
   const obj = { id, parentId: id, img, name, price };
 
@@ -28,7 +27,6 @@ const Card = ({
 
   const handleFavorite = () => {
     onFavorite(obj);
-    setFavorite(!favorite);
   };
 
   return (
@@ -50,9 +48,13 @@ const Card = ({
         </ContentLoader>
       ) : (
         <>
-          <div className={styles.favorite} onClick={handleFavorite}>
-            {onFavorite && <img alt="like" src={favorite ? liked : unliked} />}
-          </div>
+          {onFavorite && (
+            <div className={styles.favorite} onClick={handleFavorite}>
+              {onFavorite && (
+                <img alt="like" src={isItemLiked(id) ? liked : unliked} />
+              )}
+            </div>
+          )}
 
           <img src={img} alt="sneaker" width={133} height={112} />
           <h5> {name} </h5>
@@ -65,7 +67,7 @@ const Card = ({
               <img
                 alt="addToCard"
                 onClick={handlePlus}
-                src={isItemAdded(id) ? chPlus : plus}
+                src={isItemAdded(id) ? greenPlus : plus}
               />
             )}
           </div>

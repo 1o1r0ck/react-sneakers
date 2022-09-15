@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { AppContext } from "../../App";
 
 function Favorite() {
-  const {favorites, onAddToFavorite} = useContext(AppContext);
+  const { favorites, onAddToFavorite } = useContext(AppContext);
   return (
     <div className={styles.favorites}>
       {favorites.length > 0 ? (
@@ -26,8 +26,7 @@ function Favorite() {
             ))}
           </div>
         </div>
-      ) : 
-      (
+      ) : (
         <div className={styles.emptyFavorites}>
           <img src={crySmile} alt="Smile" width={70} height={70} />
           <h3>Закладок нет </h3>

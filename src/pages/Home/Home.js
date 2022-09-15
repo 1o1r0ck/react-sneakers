@@ -12,28 +12,24 @@ function Home({
   onAddToFavorite,
   isLoading,
 }) {
-
-
   const clean = () => {
     setSearchValue("");
   };
 
-  
-
   const renderItems = () => {
     const filteredItems = items.filter((item) =>
-    item.name.toLowerCase().includes(searchValue.toLowerCase()))
+      item.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
     return (isLoading ? [...Array(10)] : filteredItems).map((item, index) => (
-            <Card
-              key={index}
-              onPlus={(obj) => onAddToCard(item)}
-              onFavorite={(obj) => onAddToFavorite(obj)}
-              {...item}
-              loading = {isLoading}
-            />
-          ))
-
-  }
+      <Card
+        key={index}
+        onPlus={(obj) => onAddToCard(obj)}
+        onFavorite={(obj) => onAddToFavorite(obj)}
+        {...item}
+        loading={isLoading}
+      />
+    ));
+  };
 
   return (
     <div className={styles.content}>
@@ -63,9 +59,7 @@ function Home({
         </div>
       </div>
 
-      <div className={styles.sneakers}>
-        { renderItems()}
-      </div>
+      <div className={styles.sneakers}>{renderItems()}</div>
     </div>
   );
 }

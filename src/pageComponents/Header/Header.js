@@ -30,7 +30,7 @@ const Header = (props) => {
             width={18}
             height={18}
           />
-          <span> {total} руб.</span>
+          <span className={styles.total}> {total} руб.</span>
         </li>
         <li>
           <Link to="/favorite">

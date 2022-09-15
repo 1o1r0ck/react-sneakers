@@ -11,32 +11,32 @@ import { useState } from "react";
 
 const delay = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
-const Drawer = ({ onClose, onRemove, items = [], opened}) => {
-  const {cartItems, setCartItems, total} = useCart();
+const Drawer = ({ onClose, onRemove, items = [], opened }) => {
+  const { cartItems, setCartItems, total } = useCart();
   const [isOrderComplete, setIsOrderComplete] = useState(false);
   const [orderId, setOrderId] = useState(null);
 
   const onClickOrder = async () => {
-    
-      const { data } = await axios.post(
-        "https://62f172ac25d9e8a2e7cc9e15.mockapi.io/orders",
-        { items: cartItems }
+    const { data } = await axios.post(
+      "https://62f172ac25d9e8a2e7cc9e15.mockapi.io/orders",
+      { items: cartItems }
+    );
+
+    setOrderId(data.id);
+    setIsOrderComplete(true);
+    setCartItems([]);
+
+    for (let i = 0; i < cartItems.length; i++) {
+      const item = cartItems[i];
+      await axios.delete(
+        "https://62f172ac25d9e8a2e7cc9e15.mockapi.io/cart" + item.id
       );
-
-      setOrderId(data.id);
-      setIsOrderComplete(true);
-      setCartItems([]);
-
-      for (let i = 0; i < cartItems.length; i++) {
-        const item = cartItems[i];
-        await axios.delete("https://62f172ac25d9e8a2e7cc9e15.mockapi.io/cart" + item.id);
-        await delay();
-      }
-    
+      await delay();
+    }
   };
 
   return (
-    <div className={`${styles.overlay} ${opened ? styles.visible : ''}`}>
+    <div className={`${styles.overlay} ${opened ? styles.visible : ""}`}>
       <div className={styles.drawer}>
         <h2>
           Корзина

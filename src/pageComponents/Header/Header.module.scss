@@ -1,27 +1,31 @@
-header{
-    padding: 40px;
+header {
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eaeaea;
+  .headerLeft {
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #eaeaea;
-    .headerLeft{
-        display: flex;
-        .headerTitle{
-            margin-left: 16px;
-            p{
-                opacity: 0.7;
-            }
-        }
+    .headerTitle {
+      margin-left: 16px;
+      p {
+        opacity: 0.7;
+      }
     }
-
-    .headerInfo{
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        li{
-            margin-right: 30px;
-            img{
-                cursor: pointer;
-            }
-        }            
+  }
+  .headerInfo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    li {
+      display: flex;
+      align-items: center;
+      margin-right: 30px;
+      img {
+        cursor: pointer;
+      }
+      .total {
+        margin-left: 10px;
+      }
     }
+  }
 }
